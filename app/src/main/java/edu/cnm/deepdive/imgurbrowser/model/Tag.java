@@ -8,6 +8,7 @@ public class Tag {
   @Expose
   private String name;
 
+  @Expose
   @SerializedName("display_name")
   private String displayName;
 
