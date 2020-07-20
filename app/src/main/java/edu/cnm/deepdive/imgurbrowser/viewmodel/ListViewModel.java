@@ -38,7 +38,7 @@ public class ListViewModel extends AndroidViewModel {
   public void loadData() {
     pending.add(
     imgurService.getSearchResult(BuildConfig.CLIENT_ID,
-        "Fish AND Sharks")
+        "cars")
         .subscribeOn(Schedulers.io())
         .subscribe(
             searchResult -> this.searchResult.postValue(searchResult),
