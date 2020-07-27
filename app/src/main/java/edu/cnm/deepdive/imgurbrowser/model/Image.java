@@ -3,9 +3,11 @@ package edu.cnm.deepdive.imgurbrowser.model;
 import androidx.annotation.NonNull;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
-public class Image {
+public class Image implements Serializable {
 
+  private static final long serialVersionUID = -5530468598939493861L;
   @Expose
   @SerializedName("id")
   private String imageId;
@@ -18,7 +20,7 @@ public class Image {
 
   @Expose
   @SerializedName("datetime")
-  private long imageDateTime;
+  private Long imageDateTime;
 
   @Expose
   private String type;
@@ -29,8 +31,8 @@ public class Image {
   @Expose
   private Integer height;
 
-  @SerializedName("link")
   @Expose
+  @SerializedName("link")
   private String url;
 
   @Expose
@@ -38,6 +40,10 @@ public class Image {
 
   @Expose
   private Long bandwidth;
+
+  public Image(String imageUrl) {
+    url = imageUrl;
+  }
 
   public String getImageId() {
     return imageId;
@@ -63,11 +69,11 @@ public class Image {
     this.description = description;
   }
 
-  public long getImageDateTime() {
+  public Long getImageDateTime() {
     return imageDateTime;
   }
 
-  public void setImageDateTime(long imageDateTime) {
+  public void setImageDateTime(Long imageDateTime) {
     this.imageDateTime = imageDateTime;
   }
 
@@ -99,10 +105,6 @@ public class Image {
     return url;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
   public Integer getViews() {
     return views;
   }
@@ -123,7 +125,7 @@ public class Image {
   @Override
   public String toString() {
     String alt = "Title N/A";
-    if(title == null) {
+    if (title == null) {
       title = alt;
     }
     return title + " " + url;
