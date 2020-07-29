@@ -23,7 +23,6 @@ public class GalleryListAdapter extends
   private final List<Gallery> galleries;
   private final OnItemSelectedHelper onItemSelectedHelper;
 
-
   public GalleryListAdapter(Context context, List<Gallery> galleries,
       OnItemSelectedHelper onItemSelectedHelper) {
     super();
@@ -63,8 +62,8 @@ public class GalleryListAdapter extends
 
     public GalleryViewHolder(@NonNull View itemView) {
       super(itemView);
-      title = itemView.findViewById(R.id.title);
-      description = itemView.findViewById(R.id.description);
+      title = itemView.findViewById(R.id.gallery_title);
+      description = itemView.findViewById(R.id.gallery_description);
       imageSpinner = itemView.findViewById(R.id.gallery_search_spinner);
 
     }
@@ -77,17 +76,17 @@ public class GalleryListAdapter extends
       title.setText(gallery.getTitle());
       description.setText(gallery.getDescription());
       GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(context,
-withIconList);
+          withIconList);
       imageSpinner.setAdapter(galleryImageAdapter);
       imageSpinner.setOnItemSelectedListener(this);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-if(position > 0) {
-  onItemSelectedHelper.onSelected(gallery, gallery.getImages().get(position-1));
-  adapterView.setSelection(0);
-}
+      if(position > 0) {
+        onItemSelectedHelper.onSelected(gallery,gallery.getImages().get(position-1));
+        adapterView.setSelection(0);
+      }
     }
 
     @Override
